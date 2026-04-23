@@ -1,11 +1,6 @@
-/* =============================================
-   BAE JIN-HEE PORTFOLIO - MAIN SCRIPT
-   Firebase + White Cube + Security
-   ============================================= */
-
-// =============================
-// 1. FIREBASE INITIALIZATION
-// =============================
+/* ========================================
+   FIREBASE CONFIG
+   ======================================== */
 const firebaseConfig = {
   apiKey: "AIzaSyDQPo4IxNSSdCpTkn357WOBIGXVZkQskEk",
   authDomain: "baejinhee-portfolio.firebaseapp.com",
@@ -19,35 +14,29 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const storage = firebase.storage();
 
-// =============================
-// 2. GLOBAL VARIABLES
-// =============================
+/* ========================================
+   GLOBAL STATE
+   ======================================== */
 let currentLang = 'ko';
-let allWorks = [];
-let filteredWorks = [];
-let currentFilter = 'all';
-let currentModalIndex = 0;
-let logoClickCount = 0;
-let logoClickTimer = null;
 
-// =============================
-// 3. LOADING SCREEN
-// =============================
+/* ========================================
+   LOADING SCREEN
+   ======================================== */
 window.addEventListener('load', () => {
-  const loadingScreen = document.getElementById('loading-screen');
   setTimeout(() => {
-    loadingScreen.classList.add('hidden');
-    document.body.style.overflow = 'auto';
-    initFadeIn();
+    const loader = document.getElementById('loading-screen');
+    if (loader) {
+      loader.classList.add('hidden');
+      setTimeout(() => loader.remove(), 600);
+    }
   }, 800);
 });
 
-// =============================
-// 4. HEADER SCROLL EFFECT
-// =============================
-const header = document.querySelector('header');
-
+/* ========================================
+   HEADER SCROLL
+   ======================================== */
 window.addEventListener('scroll', () => {
+  const header = document.getElementById('header');
   if (window.scrollY > 50) {
     header.classList.add('scrolled');
   } else {
@@ -55,601 +44,240 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// =============================
-// 5. MOBILE MENU
-// =============================
-const menuToggle = document.querySelector('.menu-toggle');
-const nav = document.querySelector('nav');
+/* ========================================
+   MOBILE NAV
+   ======================================== */
+const menuToggle = document.getElementById('menuToggle');
+const mobileNav = document.getElementById('mobileNav');
 
-if (menuToggle) {
-  menuToggle.addEventListener('click', () => {
-    menuToggle.classList.toggle('active');
-    nav.classList.toggle('open');
-  });
+menuToggle?.addEventListener('click', () => {
+  mobileNav.classList.toggle('active');
+});
 
-  // Close menu when clicking nav links
-  nav.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      menuToggle.classList.remove('active');
-      nav.classList.remove('open');
-    });
-  });
-}
-
-// =============================
-// 6. SMOOTH SCROLL
-// =============================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      const headerHeight = header.offsetHeight;
-      const targetPosition = target.offsetTop - headerHeight - 20;
-      window.scrollTo({
-        top: targetPosition,
-        behavior: 'smooth'
-      });
-    }
+document.querySelectorAll('.mobile-nav .nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileNav.classList.remove('active');
   });
 });
 
-// =============================
-// 7. FADE-IN ANIMATION
-// =============================
-function initFadeIn() {
-  const fadeElements = document.querySelectorAll('.fade-in');
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.classList.add('visible');
-        }, index * 100);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+/* ========================================
+   FADE IN ON SCROLL
+   ======================================== */
+const fadeObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
   });
+}, { threshold: 0.1 });
 
-  fadeElements.forEach(el => observer.observe(el));
-}
+document.querySelectorAll('.fade-in').forEach(el => {
+  fadeObserver.observe(el);
+});
 
-// =============================
-// 8. LANGUAGE TOGGLE
-// =============================
-const langToggle = document.querySelector('.lang-toggle');
+/* ========================================
+   LANGUAGE TOGGLE
+   ======================================== */
+const langToggle = document.getElementById('langToggle');
 
-if (langToggle) {
-  langToggle.addEventListener('click', () => {
-    currentLang = currentLang === 'ko' ? 'en' : 'ko';
-    langToggle.textContent = currentLang === 'ko' ? 'EN' : 'KR';
-    updateLanguage();
-  });
-}
+langToggle?.addEventListener('click', () => {
+  currentLang = currentLang === 'ko' ? 'en' : 'ko';
+  langToggle.textContent = currentLang === 'ko' ? 'EN' : 'KO';
+  updateLanguage(currentLang);
+});
 
-function updateLanguage() {
-  // Toggle text elements
+function updateLanguage(lang) {
+  // data-ko / data-en attributes
   document.querySelectorAll('[data-ko]').forEach(el => {
-    if (currentLang === 'ko') {
-      el.textContent = el.getAttribute('data-ko');
-    } else {
-      el.textContent = el.getAttribute('data-en');
+    if (el.hasAttribute('data-' + lang)) {
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+        el.placeholder = el.getAttribute('data-' + lang);
+      } else {
+        el.textContent = el.getAttribute('data-' + lang);
+      }
     }
   });
 
-  // Toggle HTML elements (for multi-line content)
-  document.querySelectorAll('[data-ko-html]').forEach(el => {
-    if (currentLang === 'ko') {
-      el.innerHTML = el.getAttribute('data-ko-html');
-    } else {
-      el.innerHTML = el.getAttribute('data-en-html');
-    }
+  // lang-ko / lang-en blocks
+  document.querySelectorAll('.lang-ko').forEach(el => {
+    el.style.display = lang === 'ko' ? '' : 'none';
   });
-
-  // Re-render works with new language
-  renderWorks();
+  document.querySelectorAll('.lang-en').forEach(el => {
+    el.style.display = lang === 'en' ? '' : 'none';
+  });
 }
-// =============================
-// 9. FIREBASE - LOAD WORKS
-// =============================
+
+/* ========================================
+   LOAD WORKS FROM FIREBASE
+   ======================================== */
 async function loadWorks() {
+  const grid = document.getElementById('worksGrid');
+  if (!grid) return;
+
   try {
-    const worksGrid = document.querySelector('.works-grid');
-    if (!worksGrid) return;
-
-    // Show loading state
-    worksGrid.innerHTML = '<div class="works-empty">Loading...</div>';
-
     const snapshot = await db.collection('works')
       .orderBy('order', 'asc')
       .get();
 
-    allWorks = [];
-    snapshot.forEach(doc => {
-      allWorks.push({ id: doc.id, ...doc.data() });
-    });
-
-    // If no works yet, show empty state
-    if (allWorks.length === 0) {
-      worksGrid.innerHTML = `
-        <div class="works-empty">
-          ${currentLang === 'ko' ? '준비 중입니다' : 'Coming Soon'}
-        </div>
-      `;
+    if (snapshot.empty) {
+      grid.innerHTML = '<p style="color:#aaa;font-size:13px;grid-column:1/-1;text-align:center;padding:60px 0;">작품이 준비 중입니다.</p>';
       return;
     }
 
-    filteredWorks = [...allWorks];
-    renderWorks();
-    buildCategoryFilters();
+    const categories = new Set();
 
-  } catch (error) {
-    console.error('Error loading works:', error);
-    const worksGrid = document.querySelector('.works-grid');
-    if (worksGrid) {
-      worksGrid.innerHTML = `
-        <div class="works-empty">
-          ${currentLang === 'ko' ? '작품을 불러올 수 없습니다' : 'Unable to load works'}
+    snapshot.forEach(doc => {
+      const data = doc.data();
+      if (data.category) categories.add(data.category);
+
+      const card = document.createElement('div');
+      card.className = 'work-card';
+      card.dataset.category = data.category || 'all';
+      card.innerHTML = `
+        <img src="${data.imageUrl}" alt="${data.title || ''}" loading="lazy" />
+        <div class="work-overlay">
+          <h4>${data.title || ''}</h4>
+          <p>${data.year || ''}</p>
         </div>
       `;
+      card.addEventListener('click', () => openModal(data));
+      grid.appendChild(card);
+    });
+
+    if (categories.size > 0) {
+      const filterContainer = document.querySelector('.works-filter');
+      categories.forEach(cat => {
+        const btn = document.createElement('button');
+        btn.className = 'filter-btn';
+        btn.dataset.filter = cat;
+        btn.textContent = cat;
+        filterContainer.appendChild(btn);
+      });
+      initFilters();
     }
+  } catch (error) {
+    console.error('Works load error:', error);
   }
 }
 
-// =============================
-// 10. RENDER WORKS GRID
-// =============================
-function renderWorks() {
-  const worksGrid = document.querySelector('.works-grid');
-  if (!worksGrid) return;
-
-  if (filteredWorks.length === 0) {
-    worksGrid.innerHTML = `
-      <div class="works-empty">
-        ${currentLang === 'ko' ? '해당 카테고리에 작품이 없습니다' : 'No works in this category'}
-      </div>
-    `;
-    return;
-  }
-
-  worksGrid.innerHTML = filteredWorks.map((work, index) => `
-    <div class="work-item fade-in" onclick="openModal(${index})" style="transition-delay: ${index * 0.05}s">
-      <img src="${work.imageUrl}" alt="${currentLang === 'ko' ? work.titleKo : work.titleEn}" loading="lazy">
-      <div class="work-overlay">
-        <div class="work-title">${currentLang === 'ko' ? work.titleKo : work.titleEn}</div>
-        <div class="work-year">${work.year || ''}</div>
-      </div>
-    </div>
-  `).join('');
-
-  // Re-initialize fade-in for new elements
-  setTimeout(() => initFadeIn(), 100);
-}
-
-// =============================
-// 11. CATEGORY FILTERS
-// =============================
-function buildCategoryFilters() {
-  const filterContainer = document.querySelector('.category-filter');
-  if (!filterContainer) return;
-
-  // Collect unique categories
-  const categories = new Set();
-  allWorks.forEach(work => {
-    if (work.category) {
-      categories.add(work.category);
-    }
-  });
-
-  // Build filter buttons
-  let filterHTML = `<button class="active" onclick="filterWorks('all')">
-    <span data-ko="전체" data-en="All">${currentLang === 'ko' ? '전체' : 'All'}</span>
-  </button>`;
-
-  const categoryLabels = {
-    'painting': { ko: '회화', en: 'Painting' },
-    'glass': { ko: '유리', en: 'Glass' },
-    'installation': { ko: '설치', en: 'Installation' },
-    'stained-glass': { ko: '스테인드글라스', en: 'Stained Glass' },
-    'mixed-media': { ko: '혼합매체', en: 'Mixed Media' },
-    'drawing': { ko: '드로잉', en: 'Drawing' },
-    'digital': { ko: '디지털', en: 'Digital' },
-    'other': { ko: '기타', en: 'Other' }
-  };
-
-  categories.forEach(cat => {
-    const label = categoryLabels[cat] || { ko: cat, en: cat };
-    filterHTML += `<button onclick="filterWorks('${cat}')">
-      <span>${currentLang === 'ko' ? label.ko : label.en}</span>
-    </button>`;
-  });
-
-  filterContainer.innerHTML = filterHTML;
-}
-
-function filterWorks(category) {
-  currentFilter = category;
-
-  // Update active state
-  document.querySelectorAll('.category-filter button').forEach(btn => {
-    btn.classList.remove('active');
-  });
-  event.currentTarget.classList.add('active');
-
-  // Filter works
-  if (category === 'all') {
-    filteredWorks = [...allWorks];
-  } else {
-    filteredWorks = allWorks.filter(work => work.category === category);
-  }
-
-  renderWorks();
-}
-
-// =============================
-// 12. MODAL (ARTWORK VIEWER)
-// =============================
-const modalOverlay = document.querySelector('.modal-overlay');
-const modalImage = document.querySelector('.modal-content img');
-const modalTitle = document.querySelector('.modal-title');
-const modalDetail = document.querySelector('.modal-detail');
-
-function openModal(index) {
-  if (!filteredWorks[index]) return;
-
-  currentModalIndex = index;
-  const work = filteredWorks[index];
-
-  if (modalImage) modalImage.src = work.imageUrl;
-  if (modalImage) modalImage.alt = currentLang === 'ko' ? work.titleKo : work.titleEn;
-
-  if (modalTitle) {
-    modalTitle.textContent = currentLang === 'ko' ? work.titleKo : work.titleEn;
-  }
-
-  if (modalDetail) {
-    let detailText = '';
-    if (work.year) detailText += work.year;
-    if (work.material) {
-      const mat = currentLang === 'ko' ? (work.materialKo || work.material) : work.material;
-      detailText += detailText ? ' · ' + mat : mat;
-    }
-    if (work.size) detailText += detailText ? ' · ' + work.size : work.size;
-    modalDetail.textContent = detailText;
-  }
-
-  if (modalOverlay) {
-    modalOverlay.style.display = 'flex';
-    setTimeout(() => modalOverlay.classList.add('active'), 10);
-    document.body.style.overflow = 'hidden';
-  }
-}
-
-function closeModal() {
-  if (modalOverlay) {
-    modalOverlay.classList.remove('active');
-    setTimeout(() => {
-      modalOverlay.style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }, 400);
-  }
-}
-
-function prevWork() {
-  if (filteredWorks.length === 0) return;
-  currentModalIndex = (currentModalIndex - 1 + filteredWorks.length) % filteredWorks.length;
-  openModal(currentModalIndex);
-}
-
-function nextWork() {
-  if (filteredWorks.length === 0) return;
-  currentModalIndex = (currentModalIndex + 1) % filteredWorks.length;
-  openModal(currentModalIndex);
-}
-
-// Modal click outside to close
-if (modalOverlay) {
-  modalOverlay.addEventListener('click', (e) => {
-    if (e.target === modalOverlay) {
-      closeModal();
-    }
-  });
-}
-
-// Keyboard navigation
-document.addEventListener('keydown', (e) => {
-  if (!modalOverlay || modalOverlay.style.display !== 'flex') return;
-
-  if (e.key === 'Escape') closeModal();
-  if (e.key === 'ArrowLeft') prevWork();
-  if (e.key === 'ArrowRight') nextWork();
-});
-// =============================
-// 13. ADMIN ACCESS (5-CLICK LOGO)
-// =============================
-const logo = document.querySelector('.logo');
-
-if (logo) {
-  logo.addEventListener('click', (e) => {
-    e.preventDefault();
-    logoClickCount++;
-
-    // Reset timer on each click
-    clearTimeout(logoClickTimer);
-    logoClickTimer = setTimeout(() => {
-      logoClickCount = 0;
-    }, 2000);
-
-    // 5 clicks within 2 seconds
-    if (logoClickCount >= 5) {
-      logoClickCount = 0;
-      clearTimeout(logoClickTimer);
-      openAdminPrompt();
-    }
-  });
-}
-
-function openAdminPrompt() {
-  const password = prompt('관리자 비밀번호를 입력하세요:');
-  if (password === 'jinhee0228') {
-    window.location.href = '/admin.html';
-  } else if (password !== null) {
-    alert('비밀번호가 올바르지 않습니다.');
-  }
-}
-
-// =============================
-// 14. SECURITY PROTECTIONS
-// =============================
-
-// Disable right-click
-document.addEventListener('contextmenu', (e) => {
-  e.preventDefault();
-  return false;
-});
-
-// Disable keyboard shortcuts
-document.addEventListener('keydown', (e) => {
-  // F12
-  if (e.key === 'F12') {
-    e.preventDefault();
-    return false;
-  }
-
-  // Ctrl+Shift+I (Inspector)
-  if (e.ctrlKey && e.shiftKey && e.key === 'I') {
-    e.preventDefault();
-    return false;
-  }
-
-  // Ctrl+Shift+J (Console)
-  if (e.ctrlKey && e.shiftKey && e.key === 'J') {
-    e.preventDefault();
-    return false;
-  }
-
-  // Ctrl+Shift+C (Element picker)
-  if (e.ctrlKey && e.shiftKey && e.key === 'C') {
-    e.preventDefault();
-    return false;
-  }
-
-  // Ctrl+U (View source)
-  if (e.ctrlKey && e.key === 'u') {
-    e.preventDefault();
-    return false;
-  }
-
-  // Ctrl+S (Save)
-  if (e.ctrlKey && e.key === 's') {
-    e.preventDefault();
-    return false;
-  }
-
-  // Ctrl+P (Print)
-  if (e.ctrlKey && e.key === 'p') {
-    e.preventDefault();
-    return false;
-  }
-});
-
-// Disable drag on images
-document.addEventListener('dragstart', (e) => {
-  if (e.target.tagName === 'IMG') {
-    e.preventDefault();
-    return false;
-  }
-});
-
-// Disable text selection on images
-document.querySelectorAll('img').forEach(img => {
-  img.style.userSelect = 'none';
-  img.style.webkitUserSelect = 'none';
-  img.setAttribute('draggable', 'false');
-});
-
-// =============================
-// 15. TOUCH SUPPORT (MOBILE)
-// =============================
-let touchStartX = 0;
-let touchEndX = 0;
-
-if (modalOverlay) {
-  modalOverlay.addEventListener('touchstart', (e) => {
-    touchStartX = e.changedTouches[0].screenX;
-  }, { passive: true });
-
-  modalOverlay.addEventListener('touchend', (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-  }, { passive: true });
-}
-
-function handleSwipe() {
-  const swipeThreshold = 50;
-  const diff = touchStartX - touchEndX;
-
-  if (Math.abs(diff) > swipeThreshold) {
-    if (diff > 0) {
-      nextWork(); // Swipe left → next
-    } else {
-      prevWork(); // Swipe right → prev
-    }
-  }
-}
-// =============================
-// 16. IMAGE LAZY LOADING FALLBACK
-// =============================
-if ('IntersectionObserver' in window) {
-  const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-  const imageObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const img = entry.target;
-        if (img.dataset.src) {
-          img.src = img.dataset.src;
-          img.removeAttribute('data-src');
-        }
-        imageObserver.unobserve(img);
-      }
+function initFilters() {
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.work-card').forEach(card => {
+        card.style.display = (filter === 'all' || card.dataset.category === filter) ? '' : 'none';
+      });
     });
   });
-
-  lazyImages.forEach(img => imageObserver.observe(img));
 }
 
-// =============================
-// 17. SCROLL TO TOP (LOGO CLICK)
-// =============================
-// Note: Single click scrolls to top, 5 rapid clicks opens admin
-// The admin trigger in section 13 handles this with the counter
+/* ========================================
+   MODAL
+   ======================================== */
+const modal = document.getElementById('workModal');
+const modalClose = document.getElementById('modalClose');
 
-// =============================
-// 18. YEAR AUTO-UPDATE (FOOTER)
-// =============================
-const footerYear = document.querySelector('.footer-year');
-if (footerYear) {
-  footerYear.textContent = new Date().getFullYear();
+function openModal(data) {
+  document.getElementById('modalImg').src = data.imageUrl || '';
+  document.getElementById('modalTitle').textContent = data.title || '';
+  document.getElementById('modalYear').textContent = data.year || '';
+  document.getElementById('modalMedium').textContent = data.medium || '';
+  document.getElementById('modalSize').textContent = data.size || '';
+  document.getElementById('modalDesc').textContent = data.description || '';
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
 }
 
-// =============================
-// 19. PRELOAD CRITICAL IMAGES
-// =============================
-function preloadImage(url) {
-  return new Promise((resolve, reject) => {
-    const img = new Image();
-    img.onload = resolve;
-    img.onerror = reject;
-    img.src = url;
-  });
-}
-
-// =============================
-// 20. PERFORMANCE: DEBOUNCE
-// =============================
-function debounce(func, wait) {
-  let timeout;
-  return function executedFunction(...args) {
-    const later = () => {
-      clearTimeout(timeout);
-      func(...args);
-    };
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-  };
-}
-
-// Debounced scroll handler
-const debouncedScroll = debounce(() => {
-  // Additional scroll-based logic can go here
-}, 100);
-
-window.addEventListener('scroll', debouncedScroll, { passive: true });
-
-// =============================
-// 21. CONSOLE PROTECTION MESSAGE
-// =============================
-console.log('%c⚠️ STOP', 'color: red; font-size: 40px; font-weight: bold;');
-console.log('%cThis is a browser feature intended for developers.', 'font-size: 14px;');
-console.log('%c© Bae Jin-hee. All rights reserved.', 'font-size: 12px; color: gray;');
-
-// =============================
-// 22. INITIALIZE
-// =============================
-document.addEventListener('DOMContentLoaded', () => {
-  // Load works from Firebase
-  loadWorks();
-
-  // Set initial language display
-  const langToggle = document.querySelector('.lang-toggle');
-  if (langToggle) {
-    langToggle.textContent = 'EN';
-  }
-
-  // Scroll to top on page load
-  window.scrollTo(0, 0);
-
-  // Add loaded class for CSS animations
-  document.body.classList.add('loaded');
-
-  console.log('Portfolio initialized successfully.');
+modalClose?.addEventListener('click', closeModal);
+modal?.addEventListener('click', (e) => {
+  if (e.target === modal) closeModal();
 });
 
-// =============================
-// 23. SERVICE WORKER (OPTIONAL)
-// =============================
-// Uncomment below to enable offline caching
-/*
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then(reg => console.log('SW registered'))
-      .catch(err => console.log('SW failed', err));
-  });
-}
-*/
-
-// 언어 전환 시 lang-ko / lang-en 표시 전환
-function updateLanguageBlocks(lang) {
-  document.querySelectorAll('.lang-ko').forEach(el => {
-    el.style.display = lang === 'ko' ? 'block' : 'none';
-  });
-  document.querySelectorAll('.lang-en').forEach(el => {
-    el.style.display = lang === 'en' ? 'block' : 'none';
-  });
-  
-  // placeholder 전환
-  document.querySelectorAll('[data-ko-placeholder]').forEach(el => {
-    el.placeholder = lang === 'ko' ? el.dataset.koPlaceholder : el.dataset.enPlaceholder;
-  });
+function closeModal() {
+  modal.classList.remove('active');
+  document.body.style.overflow = '';
 }
 
-// Contact Form 전송 (Firebase Firestore에 저장)
-document.getElementById('contactForm')?.addEventListener('submit', async function(e) {
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
+});
+
+/* ========================================
+   CONTACT FORM
+   ======================================== */
+document.getElementById('contactForm')?.addEventListener('submit', async (e) => {
   e.preventDefault();
-  
-  const name = document.getElementById('contactName').value;
-  const email = document.getElementById('contactEmail').value;
-  const subject = document.getElementById('contactSubject').value;
-  const message = document.getElementById('contactMessage').value;
-  
+
+  const form = e.target;
+  const btn = form.querySelector('.submit-btn');
+  const originalText = btn.textContent;
+
+  btn.textContent = currentLang === 'ko' ? '전송 중...' : 'Sending...';
+  btn.disabled = true;
+
   try {
     await db.collection('messages').add({
-      name: name,
-      email: email,
-      subject: subject,
-      message: message,
+      name: document.getElementById('contactName').value.trim(),
+      email: document.getElementById('contactEmail').value.trim(),
+      subject: document.getElementById('contactSubject').value.trim(),
+      message: document.getElementById('contactMessage').value.trim(),
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       read: false
     });
-    
-    // 성공 알림
-    alert(currentLang === 'ko' ? '메시지가 전송되었습니다. 감사합니다!' : 'Message sent successfully. Thank you!');
-    this.reset();
+
+    form.style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+
+    setTimeout(() => {
+      form.reset();
+      form.style.display = '';
+      document.getElementById('formSuccess').style.display = 'none';
+      btn.textContent = originalText;
+      btn.disabled = false;
+    }, 4000);
+
   } catch (error) {
-    alert(currentLang === 'ko' ? '전송에 실패했습니다. 이메일로 직접 연락해주세요.' : 'Failed to send. Please contact via email directly.');
+    console.error('Message send error:', error);
+    alert(currentLang === 'ko'
+      ? '전송에 실패했습니다. 이메일로 직접 연락해주세요.'
+      : 'Failed to send. Please contact via email.');
+    btn.textContent = originalText;
+    btn.disabled = false;
   }
 });
+
+/* ========================================
+   ADMIN ACCESS
+   ======================================== */
+let clickTimes = [];
+document.getElementById('logo')?.addEventListener('click', () => {
+  const now = Date.now();
+  clickTimes.push(now);
+  clickTimes = clickTimes.filter(t => now - t < 2000);
+  if (clickTimes.length >= 5) {
+    clickTimes = [];
+    const pw = prompt('Password:');
+    if (pw === 'jinhee0228') {
+      window.location.href = '/admin.html';
+    }
+  }
+});
+
+/* ========================================
+   SECURITY
+   ======================================== */
+document.addEventListener('contextmenu', (e) => e.preventDefault());
+document.addEventListener('dragstart', (e) => e.preventDefault());
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'F12') e.preventDefault();
+  if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i')) e.preventDefault();
+  if (e.ctrlKey && e.shiftKey && (e.key === 'J' || e.key === 'j')) e.preventDefault();
+  if (e.ctrlKey && (e.key === 'U' || e.key === 'u')) e.preventDefault();
+});
+
+/* ========================================
+   INIT
+   ======================================== */
+loadWorks();
