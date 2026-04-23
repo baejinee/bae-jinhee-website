@@ -5,16 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bae Jin Hee | Artist Portfolio</title>
   <meta name="description" content="배진희 작가 포트폴리오 – 유리, 빛, 공간을 통한 감각적 이미지의 탐구" />
-  <meta name="keywords" content="배진희, Bae Jin Hee, artist, portfolio, glass art, stained glass, Dispace, visual artist" />
+  <meta name="keywords" content="배진희, Bae Jin Hee, artist, portfolio, glass art, stained glass, visual artist" />
   <meta property="og:title" content="Bae Jin Hee | Artist Portfolio" />
   <meta property="og:description" content="유리, 빛, 공간을 통한 감각적 이미지의 탐구" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://baejinhee.netlify.app" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<!-- Loading Screen -->
+<!-- Loading -->
 <div id="loading-screen">
   <div class="loading-pulse"></div>
 </div>
@@ -60,14 +64,14 @@
       </div>
       <div class="about-text">
         <div class="lang-ko">
-          <p>배진희(b.1996)는 서울을 기반으로 활동하는 시각예술가로,<br>유리와 빛을 통해 감각적 이미지를 탐구한다.</p>
-          <p>공간이 해체되는 순간에 주목하는 'Dispace' 개념에서 출발하여,<br>'경계', '관계' 시리즈 등 유리의 모호한 물성에서 파생된 작업을 이어가고 있다.</p>
-          <p>회화에서 출발한 작업은 스테인드글라스, 설치, 가구, 공간, 건축으로 확장되며<br>매체 간의 경계를 넘나들고 있다.</p>
+          <p>배진희(b. 1996, 서울)는 서울을 기반으로 활동하는 시각예술가로, 유리와 빛을 통해 감각적 이미지를 탐구한다.</p>
+          <p>공간이 해체되는 순간에 주목하는 'Dispace' 개념에서 출발하여, '경계', '관계' 시리즈 등 유리의 모호한 물성에서 파생된 작업을 이어가고 있다.</p>
+          <p>회화에서 출발한 작업은 스테인드글라스, 설치, 가구, 공간, 건축으로 확장되며 매체 간의 경계를 넘나들고 있다.</p>
         </div>
         <div class="lang-en" style="display:none;">
-          <p>Bae Jin Hee (b. 1996) is a Seoul-based visual artist<br>who explores sensory imagery through glass and light.</p>
-          <p>Beginning with the concept of 'Dispace'—a focus on the moment spaces dissolve—<br>she continues her practice through series such as 'Boundary' and 'Relation',<br>derived from the ambiguous materiality of glass.</p>
-          <p>Expanding from painting, her work now encompasses stained glass,<br>installation, furniture, spatial design, and architecture,<br>traversing the boundaries between mediums.</p>
+          <p>Bae Jin Hee (b. 1996, Seoul, Korea) is a Seoul-based visual artist who explores sensory imagery through glass and light.</p>
+          <p>Beginning with the concept of 'Dispace'—a focus on the moment spaces dissolve—she continues her practice through series such as 'Boundary' and 'Relation', derived from the ambiguous materiality of glass.</p>
+          <p>Expanding from painting, her work now encompasses stained glass, installation, furniture, spatial design, and architecture, traversing the boundaries between mediums.</p>
         </div>
       </div>
     </div>
@@ -81,9 +85,7 @@
     <div class="works-filter">
       <button class="filter-btn active" data-filter="all" data-ko="전체" data-en="All">전체</button>
     </div>
-    <div class="works-grid" id="worksGrid">
-      <!-- Firebase에서 동적 로드 -->
-    </div>
+    <div class="works-grid" id="worksGrid"></div>
   </div>
 </section>
 
@@ -115,195 +117,12 @@
     <div class="cv-block">
       <h3 data-ko="학력" data-en="Education">학력</h3>
       <div class="lang-ko">
-        <ul>
-          <li>2020 인천가톨릭대학교 대학원 그리스도교미술학과 스테인드글라스 전공 석사 졸업</li>
-          <li>2018 인천가톨릭대학교 조형예술대학 회화과 학사 졸업</li>
-        </ul>
+        <div class="cv-item"><span class="cv-year">2018–2020</span><div class="cv-content">인천가톨릭대학교 대학원 그리스도교미술학과 스테인드글라스 전공 석사 졸업</div></div>
+        <div class="cv-item"><span class="cv-year">2014–2018</span><div class="cv-content">인천가톨릭대학교 조형예술대학 회화과 학사 졸업</div></div>
       </div>
       <div class="lang-en" style="display:none;">
-        <ul>
-          <li>2020 M.F.A. in Christian Art (Stained Glass), Graduate School, Incheon Catholic University</li>
-          <li>2018 B.F.A. in Painting, College of Fine Arts, Incheon Catholic University</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- 개인전 -->
-    <div class="cv-block">
-      <h3 data-ko="개인전" data-en="Solo Exhibitions">개인전</h3>
-      <div class="lang-ko">
-        <ul>
-          <li>2024 《RE;lation》 공간운솔, 인천<br><span class="cv-note">인천문화재단 청년예술인 창작지원 선정</span></li>
-          <li>2022 《Dispace》 Nomakeup Studio, 인천<br><span class="cv-note">인천문화재단 청년예술인 창작지원 선정</span></li>
-          <li>2021 《빛을 바치다》 갤러리1898, 서울<br><span class="cv-note">갤러리1898 청년 성미술 공모 선정</span></li>
-        </ul>
-      </div>
-      <div class="lang-en" style="display:none;">
-        <ul>
-          <li>2024 "RE;lation" Space Unsol, Incheon<br><span class="cv-note">Selected, Incheon Foundation for Arts & Culture Young Artist Grant</span></li>
-          <li>2022 "Dispace" Nomakeup Studio, Incheon<br><span class="cv-note">Selected, Incheon Foundation for Arts & Culture Young Artist Grant</span></li>
-          <li>2021 "Offering the Light" Gallery 1898, Seoul<br><span class="cv-note">Selected, Gallery 1898 Young Sacred Art Competition</span></li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- 단체전 -->
-    <div class="cv-block">
-      <h3 data-ko="단체전" data-en="Group Exhibitions">단체전</h3>
-      <div class="lang-ko">
-        <ul>
-          <li>2026 《여운의 층위》 Gallery Mosoon, 서울</li>
-          <li>2026 《World ARTFESTA 2026》 COEX, 서울</li>
-          <li>2025 《겨자씨 닮은 용기로: 2027 서울 WYD 주제성구 묵상전》 갤러리1898, 서울</li>
-          <li>2025 《빛을 찾아서 – stained glass를 중심으로》 갤러리1898, 서울</li>
-          <li>2023 《공동의 집에 관한 대화》 성미술 청년작가 순회전, 뽈리화랑, 수원</li>
-          <li>2023 《ME, WE》 린파인아트 갤러리 특별 기획전, 린파인아트 갤러리, 서울</li>
-          <li>2023 《공동의 집에 관한 대화》 성미술 청년작가 기획전, 갤러리1898, 서울</li>
-          <li>2022 《빛의 길, Chiaroscuro》 갤러리1898, 서울</li>
-          <li>2022 《Lumière, 빛, 깨달음》 RIVUS 갤러리, 인천</li>
-          <li>2021 《성 김대건 성당 성미술 초대 작가전》 RIVUS 갤러리, 인천</li>
-          <li>2021 《생명으로 치유하다》 인천가톨릭대학교 25주년 기념전, RIVUS 갤러리, 인천</li>
-          <li>2021 《Lux, Ama et Labora》 갤러리1898, 서울</li>
-          <li>2020 《비대면 시대: 공예와 디자인》 한국조형디자인협회 국제조형디자인전, 국민대학교, 서울</li>
-          <li>2020 《한국 현대유리의 진화 2020》 신세계백화점 충청점, 천안</li>
-          <li>2019 《도계유리나라 1주년 기념 유리작가 초청 특별전》 도계유리나라, 삼척</li>
-          <li>2019 《빛 이야기 (OUR STORY OF LIGHT)》 석사학위 청구전, RIVUS 갤러리, 인천</li>
-          <li>2019 《품다》 제6회 서울가톨릭국제미술대전 수상작 전시, 인사아트센터, 서울</li>
-          <li>2018 《비빔: 상상하고 만들다》 한국조형디자인협회 국제조형디자인전, 서울대학교, 서울</li>
-          <li>2018 《ART ULSAN 2018 CHANGE & INNOVATION》 울산대공원, 울산</li>
-          <li>2018 《구원의 빛, 십자가의 길(Via Dolorosa)》 갤러리1898, 서울</li>
-          <li>2017 《스며들듯이, 따로 또 같이, 또 다른 가치》 인천아트플랫폼, 인천</li>
-          <li>2016 《아시아프 & 히든아티스트 페스티벌》 DDP, 서울</li>
-          <li>2014 《자연은 다음세대의 생명》 가온갤러리, 인천</li>
-        </ul>
-      </div>
-      <div class="lang-en" style="display:none;">
-        <ul>
-          <li>2026 "A Layer of Lingering" Gallery Mosoon, Seoul</li>
-          <li>2026 "World ARTFESTA 2026" COEX, Seoul</li>
-          <li>2025 "With the Courage of a Mustard Seed: Meditation on WYD Seoul 2027" Gallery 1898, Seoul</li>
-          <li>2025 "In Search of Light – Centered on Stained Glass" Gallery 1898, Seoul</li>
-          <li>2023 "A Conversation on Our Common Home" Touring Exhibition, Poly Gallery, Suwon</li>
-          <li>2023 "ME, WE" Special Exhibition, Lyn Fine Art Gallery, Seoul</li>
-          <li>2023 "A Conversation on Our Common Home" Gallery 1898, Seoul</li>
-          <li>2022 "The Path of Light, Chiaroscuro" Gallery 1898, Seoul</li>
-          <li>2022 "Lumière, Light, Enlightenment" RIVUS Gallery, Incheon</li>
-          <li>2021 "St. Kim Dae-geon Parish Invited Artists Exhibition" RIVUS Gallery, Incheon</li>
-          <li>2021 "Healing through Life" 25th Anniversary Exhibition, RIVUS Gallery, Incheon</li>
-          <li>2021 "Lux, Ama et Labora" Gallery 1898, Seoul</li>
-          <li>2020 "The Untact Era: Craft and Design" International Design Exhibition, Kookmin University, Seoul</li>
-          <li>2020 "Evolution in Korean Contemporary Glass 2020" Shinsegae Department Store, Cheonan</li>
-          <li>2019 "Glass Artist Invitation Exhibition" Dogye Glass World, Samcheok</li>
-          <li>2019 "Our Story of Light" M.F.A. Thesis Exhibition, RIVUS Gallery, Incheon</li>
-          <li>2019 "Embrace" 6th Seoul Catholic International Art Competition, Insa Art Center, Seoul</li>
-          <li>2018 "Bibim: Imagine and Create" International Design Exhibition, Seoul National University, Seoul</li>
-          <li>2018 "ART ULSAN 2018 CHANGE & INNOVATION" Ulsan Grand Park, Ulsan</li>
-          <li>2018 "Light of Salvation, Via Dolorosa" Gallery 1898, Seoul</li>
-          <li>2017 "Permeating, Apart Yet Together, Another Value" Incheon Art Platform, Incheon</li>
-          <li>2016 "ASYAAF & Hidden Artist Festival" DDP, Seoul</li>
-          <li>2014 "Nature is the Life of the Next Generation" Gaon Gallery, Incheon</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- 수상 -->
-    <div class="cv-block">
-      <h3 data-ko="수상" data-en="Awards">수상</h3>
-      <div class="lang-ko">
-        <ul>
-          <li>2021 성미술 청년작가 공모전 선정, 개인전 《빛을 바치다》 갤러리1898, 서울</li>
-          <li>2019 제6회 서울가톨릭국제미술대전, 입선</li>
-          <li>2018 한국조형디자인협회 국제학술대회, 입선</li>
-          <li>2018 ART ULSAN 2018 CHANGE & INNOVATION, 우수작가상</li>
-        </ul>
-      </div>
-      <div class="lang-en" style="display:none;">
-        <ul>
-          <li>2021 Selected, Young Sacred Art Competition, Solo Exhibition "Offering the Light", Gallery 1898, Seoul</li>
-          <li>2019 6th Seoul Catholic International Art Competition, Honorable Mention</li>
-          <li>2018 Korea Formative Design Association International Conference, Honorable Mention</li>
-          <li>2018 ART ULSAN 2018 CHANGE & INNOVATION, Excellence Award</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- 작품 소장 -->
-    <div class="cv-block">
-      <h3 data-ko="작품 소장" data-en="Collections">작품 소장</h3>
-      <div class="lang-ko">
-        <ul>
-          <li>파주 개인주택</li>
-          <li>서울 개인주택</li>
-        </ul>
-      </div>
-      <div class="lang-en" style="display:none;">
-        <ul>
-          <li>Private Residence, Paju</li>
-          <li>Private Residence, Seoul</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- 프로젝트 -->
-    <div class="cv-block">
-      <h3 data-ko="프로젝트" data-en="Projects">프로젝트</h3>
-      <div class="lang-ko">
-        <ul>
-          <li>2025 시흥 장곡성당 성가대석·유아방 스테인드글라스 디자인 및 제작</li>
-          <li>2024 영화 《청설》 조명 제작 참여</li>
-        </ul>
-      </div>
-      <div class="lang-en" style="display:none;">
-        <ul>
-          <li>2025 Siheung Janggok Catholic Church – Choir & Nursery Stained Glass Design and Production</li>
-          <li>2024 Film "Hear Me: Our Summer" – Lighting Production</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- 연구 활동 -->
-    <div class="cv-block">
-      <h3 data-ko="연구 활동" data-en="Research">연구 활동</h3>
-      <div class="lang-ko">
-        <ul>
-          <li>석사학위 논문<br><span class="cv-note">「복합기법 적용을 통한 현대 스테인드글라스 개념의 확장 가능성에 대한 연구」</span></li>
-          <li>학술지 논문 — 한국조형디자인협회 2022 봄호 《조형디자인연구》<br><span class="cv-note">「복합기법을 적용한 현대 스테인드글라스의 범위 확장 가능성에 대한 연구」</span></li>
-        </ul>
-      </div>
-      <div class="lang-en" style="display:none;">
-        <ul>
-          <li>M.F.A. Thesis<br><span class="cv-note">"A Study on the Expandability of Contemporary Stained Glass through Mixed Techniques"</span></li>
-          <li>Journal Article — Korea Formative Design Association, Spring 2022<br><span class="cv-note">"A Study on Expanding the Scope of Contemporary Stained Glass through Mixed Techniques"</span></li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- 스테인드글라스연구소 프로젝트 -->
-    <div class="cv-block">
-      <h3 data-ko="스테인드글라스연구소 프로젝트" data-en="Stained Glass Institute Projects">스테인드글라스연구소 프로젝트</h3>
-      <div class="lang-ko">
-        <ul>
-          <li>2022 전주교구 윤지충 성당 — 로비창 스테인드글라스</li>
-          <li>2021 수원교구 상신성당 — 로비창 스테인드글라스</li>
-          <li>2021 인천 박문중학교 — 시청각실 스테인드글라스</li>
-          <li>2020 인천교구 해안성당 — 입구 반원창 스테인드글라스</li>
-          <li>2020 인천가톨릭대학교 성 김대건 성당 — 로비창 스테인드글라스</li>
-          <li>2019 인천교구 구월동성당 — 카페 스테인드글라스</li>
-          <li>2019 수원교구 은행동성당 — 유아방 스테인드글라스</li>
-          <li>2018 청주교구 새터성당 — 입구 원형창·카페 스테인드글라스</li>
-        </ul>
-      </div>
-      <div class="lang-en" style="display:none;">
-        <ul>
-          <li>2022 Yun Ji-chung Parish, Jeonju Diocese — Lobby Stained Glass</li>
-          <li>2021 Sangsin Parish, Suwon Diocese — Lobby Stained Glass</li>
-          <li>2021 Bakmun Middle School, Incheon — Auditorium Stained Glass</li>
-          <li>2020 Haean Parish, Incheon Diocese — Entrance Semicircular Stained Glass</li>
-          <li>2020 St. Kim Dae-geon Chapel, Incheon Catholic University — Lobby Stained Glass</li>
-          <li>2019 Guwol-dong Parish, Incheon Diocese — Café Stained Glass</li>
-          <li>2019 Eunhaeng-dong Parish, Suwon Diocese — Nursery Stained Glass</li>
-          <li>2018 Saeteo Parish, Cheongju Diocese — Entrance Rose Window & Café Stained Glass</li>
-        </ul>
+        <div class="cv-item"><span class="cv-year">2018–2020</span><div class="cv-content">M.F.A. in Christian Art (Stained Glass), Graduate School, Incheon Catholic University</div></div>
+        <div class="cv-item"><span class="cv-year">2014–2018</span><div class="cv-content">B.F.A. in Painting, Department of Fine Arts, Incheon Catholic University</div></div>
       </div>
     </div>
 
@@ -311,16 +130,182 @@
     <div class="cv-block">
       <h3 data-ko="경력" data-en="Experience">경력</h3>
       <div class="lang-ko">
-        <ul>
-          <li>2022– 스튜디오 제이스텔라(J.stellar) 대표</li>
-          <li>2020–2022 인천가톨릭대학교 부설 스테인드글라스연구소 연구원</li>
-        </ul>
+        <div class="cv-item"><span class="cv-year">2022–현재</span><div class="cv-content">스튜디오 제이스텔라(J.stellar) 대표</div></div>
+        <div class="cv-item"><span class="cv-year">2020–2022</span><div class="cv-content">인천가톨릭대학교 부설 스테인드글라스연구소 연구원</div></div>
       </div>
       <div class="lang-en" style="display:none;">
-        <ul>
-          <li>2022– Director, Studio J.stellar</li>
-          <li>2020–2022 Researcher, Stained Glass Research Institute, Incheon Catholic University</li>
-        </ul>
+        <div class="cv-item"><span class="cv-year">Currently</span><div class="cv-content">Director, Studio J.stellar</div></div>
+        <div class="cv-item"><span class="cv-year">Sep 2020 – Oct 2022</span><div class="cv-content">Researcher, Stained Glass Research Institute, Incheon Catholic University</div></div>
+      </div>
+    </div>
+
+    <!-- 개인전 -->
+    <div class="cv-block">
+      <h3 data-ko="개인전" data-en="Solo Exhibitions">개인전</h3>
+      <div class="lang-ko">
+        <div class="cv-item"><span class="cv-year">2024</span><div class="cv-content"><strong>《RE;lation》</strong> 공간운솔, 인천<div class="cv-note">인천문화재단 청년예술인 창작지원 선정</div></div></div>
+        <div class="cv-item"><span class="cv-year">2022</span><div class="cv-content"><strong>《Dispace》</strong> Nomakeup Studio, 인천<div class="cv-note">인천문화재단 청년예술인 창작지원 선정</div></div></div>
+        <div class="cv-item"><span class="cv-year">2021</span><div class="cv-content"><strong>《빛을 바치다》</strong> 갤러리1898, 서울<div class="cv-note">갤러리1898 청년 성미술 공모 선정</div></div></div>
+      </div>
+      <div class="lang-en" style="display:none;">
+        <div class="cv-item"><span class="cv-year">2024</span><div class="cv-content"><strong>RE;lation</strong>, Space Unsoll, Incheon, Oct 30 – Nov 12<div class="cv-note">Selected for the Incheon Foundation for Arts & Culture Young Artists Creation Support</div></div></div>
+        <div class="cv-item"><span class="cv-year">2022</span><div class="cv-content"><strong>Dispace</strong>, Nomakeup Studio, Incheon, Oct 11 – Nov 30<div class="cv-note">Selected for the Incheon Foundation for Arts & Culture Young Artists Creation Support</div></div></div>
+        <div class="cv-item"><span class="cv-year">2021</span><div class="cv-content"><strong>Offering the Light</strong>, Gallery 1898, Seoul, Jul 7 – Jul 12<div class="cv-note">Selected for Gallery 1898 Young Sacred Art Competition</div></div></div>
+      </div>
+    </div>
+
+    <!-- 단체전 -->
+    <div class="cv-block">
+      <h3 data-ko="단체전" data-en="Group Exhibitions">단체전</h3>
+      <div class="lang-ko">
+        <div class="cv-item"><span class="cv-year">2026</span><div class="cv-content"><strong>《여운의 층위》</strong> Gallery Mosoon, 서울</div></div>
+        <div class="cv-item"><span class="cv-year">2026</span><div class="cv-content"><strong>《World ARTFESTA 2026》</strong> COEX, 서울</div></div>
+        <div class="cv-item"><span class="cv-year">2025</span><div class="cv-content"><strong>《겨자씨 닮은 용기로: 2027 서울 WYD 주제성구 묵상전》</strong> 갤러리1898, 서울</div></div>
+        <div class="cv-item"><span class="cv-year">2025</span><div class="cv-content"><strong>《빛을 찾아서 – stained glass를 중심으로》</strong> 갤러리1898, 서울</div></div>
+        <div class="cv-item"><span class="cv-year">2023</span><div class="cv-content"><strong>《공동의 집에 관한 대화》</strong> 성미술 청년작가 순회전, 뽈리화랑, 수원</div></div>
+        <div class="cv-item"><span class="cv-year">2023</span><div class="cv-content"><strong>《ME, WE》</strong> 린파인아트 갤러리 특별 기획전, 서울</div></div>
+        <div class="cv-item"><span class="cv-year">2023</span><div class="cv-content"><strong>《공동의 집에 관한 대화》</strong> 성미술 청년작가 기획전, 갤러리1898, 서울</div></div>
+        <div class="cv-item"><span class="cv-year">2022</span><div class="cv-content"><strong>《빛의 길, Chiaroscuro》</strong> 갤러리1898, 서울</div></div>
+        <div class="cv-item"><span class="cv-year">2022</span><div class="cv-content"><strong>《Lumière, 빛, 깨달음》</strong> RIVUS 갤러리, 인천</div></div>
+        <div class="cv-item"><span class="cv-year">2021</span><div class="cv-content"><strong>《성 김대건 성당 성미술 초대 작가전》</strong> RIVUS 갤러리, 인천</div></div>
+        <div class="cv-item"><span class="cv-year">2021</span><div class="cv-content"><strong>《생명으로 치유하다》</strong> 인천가톨릭대학교 25주년 기념전, RIVUS 갤러리, 인천</div></div>
+        <div class="cv-item"><span class="cv-year">2021</span><div class="cv-content"><strong>《Lux, Ama et Labora》</strong> 갤러리1898, 서울</div></div>
+        <div class="cv-item"><span class="cv-year">2020</span><div class="cv-content"><strong>《비대면 시대: 공예와 디자인》</strong> 한국조형디자인협회 국제조형디자인전, 국민대학교, 서울</div></div>
+        <div class="cv-item"><span class="cv-year">2020</span><div class="cv-content"><strong>《한국 현대유리의 진화 2020》</strong> 신세계백화점 충청점, 천안</div></div>
+        <div class="cv-item"><span class="cv-year">2019</span><div class="cv-content"><strong>《도계유리나라 1주년 기념 유리작가 초청 특별전》</strong> 도계유리나라, 삼척</div></div>
+        <div class="cv-item"><span class="cv-year">2019</span><div class="cv-content"><strong>《빛 이야기 (OUR STORY OF LIGHT)》</strong> 석사학위 청구전, RIVUS 갤러리, 인천</div></div>
+        <div class="cv-item"><span class="cv-year">2019</span><div class="cv-content"><strong>《품다》</strong> 제6회 서울가톨릭국제미술대전 수상작 전시, 인사아트센터, 서울</div></div>
+        <div class="cv-item"><span class="cv-year">2018</span><div class="cv-content"><strong>《비빔: 상상하고 만들다》</strong> 한국조형디자인협회 국제조형디자인전, 서울대학교, 서울</div></div>
+        <div class="cv-item"><span class="cv-year">2018</span><div class="cv-content"><strong>《ART ULSAN 2018 CHANGE & INNOVATION》</strong> 울산대공원, 울산</div></div>
+        <div class="cv-item"><span class="cv-year">2018</span><div class="cv-content"><strong>《구원의 빛, 십자가의 길 (Via Dolorosa)》</strong> 갤러리1898, 서울</div></div>
+        <div class="cv-item"><span class="cv-year">2017</span><div class="cv-content"><strong>《스며들듯이, 따로 또 같이, 또 다른 가치》</strong> 인천아트플랫폼, 인천</div></div>
+        <div class="cv-item"><span class="cv-year">2016</span><div class="cv-content"><strong>《아시아프 & 히든아티스트 페스티벌》</strong> DDP, 서울</div></div>
+        <div class="cv-item"><span class="cv-year">2014</span><div class="cv-content"><strong>《자연은 다음세대의 생명》</strong> 가온갤러리, 인천</div></div>
+      </div>
+      <div class="lang-en" style="display:none;">
+        <div class="cv-item"><span class="cv-year">2026</span><div class="cv-content"><strong>World ARTFESTA 2026</strong>, COEX, Seoul, Jan 22 – Jan 25 (expected)</div></div>
+        <div class="cv-item"><span class="cv-year">2025</span><div class="cv-content"><strong>With the Courage of a Mustard Seed: Meditation Exhibition on the Theme Scripture of WYD Seoul 2027</strong>, Gallery 1898, Seoul, Jul 4 – Jul 13</div></div>
+        <div class="cv-item"><span class="cv-year">2025</span><div class="cv-content"><strong>In Search of Light – Focusing on Stained Glass</strong>, Gallery 1898, Seoul, Mar 28 – Apr 6</div></div>
+        <div class="cv-item"><span class="cv-year">2023</span><div class="cv-content"><strong>Young Sacred Art Artists Traveling Exhibition, A Conversation about Our Common Home</strong>, Polly Gallery, Suwon, Oct 27 – Nov 6</div></div>
+        <div class="cv-item"><span class="cv-year">2023</span><div class="cv-content"><strong>Special Curated Exhibition ME, WE</strong>, Lynnfine Art Gallery, Seoul, Jul 11 – Aug 11</div></div>
+        <div class="cv-item"><span class="cv-year">2023</span><div class="cv-content"><strong>Young Sacred Art Artists Curated Exhibition, A Conversation about Our Common Home</strong>, Gallery 1898, Seoul, Jul 12 – Jul 20</div></div>
+        <div class="cv-item"><span class="cv-year">2022</span><div class="cv-content"><strong>The Path of Light: Chiaroscuro</strong>, Gallery 1898, Seoul, Sep 28 – Oct 4</div></div>
+        <div class="cv-item"><span class="cv-year">2022</span><div class="cv-content"><strong>Lumière: Light, Enlightenment</strong>, RIVUS Gallery, Incheon, Sep 16 – Sep 21</div></div>
+        <div class="cv-item"><span class="cv-year">2021</span><div class="cv-content"><strong>St. Andrew Kim Dae-geon Cathedral Invitational Exhibition of Sacred Art</strong>, RIVUS Gallery Exhibition Hall 2, Incheon, Oct 6 – Oct 20</div></div>
+        <div class="cv-item"><span class="cv-year">2021</span><div class="cv-content"><strong>25th Anniversary Exhibition of Incheon Catholic University, Healing through Life</strong>, RIVUS Gallery, Incheon, Sep 6 – Sep 26</div></div>
+        <div class="cv-item"><span class="cv-year">2021</span><div class="cv-content"><strong>Lux, Ama et Labora</strong>, Gallery 1898, Seoul, Feb 3 – Feb 9</div></div>
+        <div class="cv-item"><span class="cv-year">2020</span><div class="cv-content"><strong>International Formative Design Exhibition, The Untact Era: Craft and Design</strong>, College of Fine Arts, Kookmin University, Seoul, Dec 4 – Dec 11</div></div>
+        <div class="cv-item"><span class="cv-year">2020</span><div class="cv-content"><strong>Evolution in Korean Contemporary Glass 2020</strong>, Cultural Hall (5F), Shinsegae Department Store Chungcheong Branch, Cheonan, Jun 26 – Jul 12</div></div>
+        <div class="cv-item"><span class="cv-year">2019</span><div class="cv-content"><strong>Special Invitational Exhibition for the 1st Anniversary of Dogye Glass Land</strong>, Dogye Glass Land, Samcheok, May 28 – Aug 25</div></div>
+        <div class="cv-item"><span class="cv-year">2019</span><div class="cv-content"><strong>M.F.A. Degree Exhibition, Our Story of Light</strong>, RIVUS Gallery, Incheon Catholic University, Incheon, Dec 11 – Dec 18</div></div>
+        <div class="cv-item"><span class="cv-year">2019</span><div class="cv-content"><strong>Award Exhibition, Embrace, The 6th Seoul Catholic International Art Exhibition</strong>, Insa Art Center, Seoul, Dec 20 – Dec 30</div></div>
+        <div class="cv-item"><span class="cv-year">2018</span><div class="cv-content"><strong>International Formative Design Exhibition, Bibim: Imagining and Making</strong>, Art Research Complex, Seoul National University, Seoul, Oct 18 – Oct 24</div></div>
+        <div class="cv-item"><span class="cv-year">2018</span><div class="cv-content"><strong>ART ULSAN 2018: Change & Innovation</strong>, Special Exhibition Hall, Ulsan Grand Park South Gate Plaza, Aug 31 – Sep 3</div></div>
+        <div class="cv-item"><span class="cv-year">2018</span><div class="cv-content"><strong>Light of Salvation, The Way of the Cross (Via Dolorosa)</strong>, Gallery 1898, Myeong-dong, Seoul, Jan 10 – Jan 16</div></div>
+        <div class="cv-item"><span class="cv-year">2017</span><div class="cv-content"><strong>As If Soaking In: Separately, Yet Together, Another Value</strong>, Incheon Art Platform, Incheon, Dec 21 – Dec 29</div></div>
+        <div class="cv-item"><span class="cv-year">2016</span><div class="cv-content"><strong>ASYAAF & Hidden Artists Festival</strong>, Dongdaemun Design Plaza (DDP), Seoul, Jul 19 – Aug 14</div></div>
+        <div class="cv-item"><span class="cv-year">2014</span><div class="cv-content"><strong>Nature Is the Life of the Next Generation</strong>, Gaon Gallery, Incheon, Oct 10 – Oct 19</div></div>
+      </div>
+    </div>
+
+    <!-- 수상 -->
+    <div class="cv-block">
+      <h3 data-ko="수상" data-en="Awards">수상</h3>
+      <div class="lang-ko">
+        <div class="cv-item"><span class="cv-year">2021</span><div class="cv-content"><strong>성미술 청년작가 공모전 선정</strong><div class="cv-sub">개인전 《빛을 바치다》 갤러리1898, 서울</div></div></div>
+        <div class="cv-item"><span class="cv-year">2019</span><div class="cv-content"><strong>제6회 서울가톨릭국제미술대전</strong><div class="cv-sub">입선</div></div></div>
+        <div class="cv-item"><span class="cv-year">2018</span><div class="cv-content"><strong>한국조형디자인협회 국제학술대회</strong><div class="cv-sub">입선</div></div></div>
+        <div class="cv-item"><span class="cv-year">2018</span><div class="cv-content"><strong>ART ULSAN 2018 CHANGE & INNOVATION</strong><div class="cv-sub">우수작가상</div></div></div>
+      </div>
+      <div class="lang-en" style="display:none;">
+        <div class="cv-item"><span class="cv-year">2021</span><div class="cv-content"><strong>Selected Artist, Young Sacred Art Competition</strong><div class="cv-sub">Solo Exhibition Offering the Light, Gallery 1898, Seoul</div></div></div>
+        <div class="cv-item"><span class="cv-year">2019</span><div class="cv-content"><strong>Honorable Mention, The 6th Seoul Catholic International Art Exhibition</strong></div></div>
+        <div class="cv-item"><span class="cv-year">2018</span><div class="cv-content"><strong>Honorable Mention, Korea Society of Formative Design International Conference</strong></div></div>
+        <div class="cv-item"><span class="cv-year">2018</span><div class="cv-content"><strong>Excellence Award, ART ULSAN 2018: Change & Innovation</strong></div></div>
+      </div>
+    </div>
+
+    <!-- 작품 소장 -->
+    <div class="cv-block">
+      <h3 data-ko="작품 소장" data-en="Collections">작품 소장</h3>
+      <div class="lang-ko">
+        <div class="cv-item"><span class="cv-year-blank"></span><div class="cv-content">파주 개인주택</div></div>
+        <div class="cv-item"><span class="cv-year-blank"></span><div class="cv-content">서울 개인주택</div></div>
+      </div>
+      <div class="lang-en" style="display:none;">
+        <div class="cv-item"><span class="cv-year-blank"></span><div class="cv-content">Private Residence, Paju</div></div>
+        <div class="cv-item"><span class="cv-year-blank"></span><div class="cv-content">Private Residence, Seoul</div></div>
+      </div>
+    </div>
+
+    <!-- 프로젝트 -->
+    <div class="cv-block">
+      <h3 data-ko="프로젝트" data-en="Projects">프로젝트</h3>
+      <div class="lang-ko">
+        <div class="cv-item"><span class="cv-year">2025</span><div class="cv-content">시흥 장곡성당 성가대석·유아방 스테인드글라스 디자인 및 제작</div></div>
+        <div class="cv-item"><span class="cv-year">2024</span><div class="cv-content">영화 《청설》 조명 제작 참여</div></div>
+      </div>
+      <div class="lang-en" style="display:none;">
+        <div class="cv-item"><span class="cv-year">2025</span><div class="cv-content">Participation in the design and production of stained glass for the choir loft and nursery room, Janggok Catholic Church, Siheung</div></div>
+        <div class="cv-item"><span class="cv-year">2024</span><div class="cv-content">Lighting for the film Hear Me: Our Summer</div></div>
+      </div>
+    </div>
+
+    <!-- 연구 활동 -->
+    <div class="cv-block">
+      <h3 data-ko="연구 활동" data-en="Research Activities">연구 활동</h3>
+      <div class="lang-ko">
+        <div class="cv-item"><span class="cv-year-blank"></span><div class="cv-content"><strong>석사학위 논문</strong><div class="cv-sub">「복합기법 적용을 통한 현대 스테인드글라스 개념의 확장 가능성에 대한 연구」</div></div></div>
+        <div class="cv-item"><span class="cv-year-blank"></span><div class="cv-content"><strong>학술지 논문</strong> — 한국조형디자인협회 2022 봄호 《조형디자인연구》<div class="cv-sub">「복합기법을 적용한 현대 스테인드글라스의 범위 확장 가능성에 대한 연구」</div></div></div>
+      </div>
+      <div class="lang-en" style="display:none;">
+        <div class="cv-item"><span class="cv-year-blank"></span><div class="cv-content"><strong>M.F.A. Thesis</strong><div class="cv-sub">A Study on the Possibility of Expanding the Concept of Contemporary Stained Glass through the Application of Mixed Techniques</div></div></div>
+        <div class="cv-item"><span class="cv-year-blank"></span><div class="cv-content"><strong>Academic Journal Article</strong><div class="cv-sub">A Study on the Possibility of Expanding the Scope of Contemporary Stained Glass through the Application of Mixed Techniques, Formative Design Research, Korea Society of Formative Design, Spring 2022 Issue</div></div></div>
+      </div>
+    </div>
+
+    <!-- 스테인드글라스연구소 -->
+    <div class="cv-block">
+      <h3 data-ko="스테인드글라스연구소 프로젝트" data-en="Stained Glass Research Institute Projects">스테인드글라스연구소 프로젝트</h3>
+      <p class="cv-institute-note lang-ko">인천가톨릭대학교 부설 스테인드글라스연구소</p>
+      <p class="cv-institute-note lang-en" style="display:none;">Affiliated with Incheon Catholic University</p>
+      <div class="lang-ko">
+        <div class="cv-item"><span class="cv-year">2022</span><div class="cv-content">전주교구 윤지충 성당 — 로비창 스테인드글라스 디자인 및 제작</div></div>
+        <div class="cv-item"><span class="cv-year">2021</span><div class="cv-content">수원교구 상신성당 — 로비창 스테인드글라스 디자인 및 제작</div></div>
+        <div class="cv-item"><span class="cv-year">2021</span><div class="cv-content">인천 박문중학교 — 시청각실 스테인드글라스 제작</div></div>
+        <div class="cv-item"><span class="cv-year">2020</span><div class="cv-content">인천교구 해안성당 — 입구 반원창 스테인드글라스 디자인 및 제작</div></div>
+        <div class="cv-item"><span class="cv-year">2020</span><div class="cv-content">인천가톨릭대학교 성 김대건 성당 — 로비창 스테인드글라스 디자인 및 제작</div></div>
+        <div class="cv-item"><span class="cv-year">2019</span><div class="cv-content">인천교구 구월동성당 — 카페 스테인드글라스 디자인 및 제작</div></div>
+        <div class="cv-item"><span class="cv-year">2019</span><div class="cv-content">수원교구 은행동성당 — 유아방 스테인드글라스 디자인 및 제작</div></div>
+        <div class="cv-item"><span class="cv-year">2018</span><div class="cv-content">청주교구 새터성당 — 입구 원형창·카페 스테인드글라스 디자인 및 제작</div></div>
+      </div>
+      <div class="lang-en" style="display:none;">
+        <div class="cv-item"><span class="cv-year">2022</span><div class="cv-content">Participation in the design and production of lobby stained glass windows, Yoon Ji-chung Catholic Church, Jeonju Diocese</div></div>
+        <div class="cv-item"><span class="cv-year">2021</span><div class="cv-content">Participation in the design and production of lobby stained glass windows, Sangsin Catholic Church, Suwon Diocese</div></div>
+        <div class="cv-item"><span class="cv-year">2021</span><div class="cv-content">Participation in the production of stained glass for the audiovisual room, Parkmun Middle School, Incheon</div></div>
+        <div class="cv-item"><span class="cv-year">2020</span><div class="cv-content">Participation in the design and production of semicircular entrance stained glass windows, Haean Catholic Church, Incheon Diocese</div></div>
+        <div class="cv-item"><span class="cv-year">2020</span><div class="cv-content">Participation in the design and production of lobby stained glass windows, St. Andrew Kim Dae-geon Catholic Church, Incheon Catholic University</div></div>
+        <div class="cv-item"><span class="cv-year">2019</span><div class="cv-content">Participation in the design and production of café stained glass, Guwol-dong Catholic Church, Incheon Diocese</div></div>
+        <div class="cv-item"><span class="cv-year">2019</span><div class="cv-content">Participation in the design and production of nursery room stained glass, Eunhaeng-dong Catholic Church, Suwon Diocese</div></div>
+        <div class="cv-item"><span class="cv-year">2018</span><div class="cv-content">Participation in the design and production of circular entrance windows and café stained glass, Saeteo Catholic Church, Cheongju Diocese</div></div>
+      </div>
+    </div>
+
+    <!-- 포트폴리오 PDF -->
+    <div class="cv-block cv-download-block">
+      <h3 data-ko="포트폴리오 다운로드" data-en="Portfolio Download">포트폴리오 다운로드</h3>
+      <div class="pdf-download-area">
+        <div class="pdf-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/>
+          </svg>
+        </div>
+        <div class="pdf-info">
+          <p class="pdf-filename">Bae_JinHee_Portfolio.pdf</p>
+          <p class="pdf-size lang-ko">작가 포트폴리오 PDF</p>
+          <p class="pdf-size lang-en" style="display:none;">Artist Portfolio PDF</p>
+        </div>
+        <a href="files/Bae_JinHee_Portfolio.pdf" download class="pdf-btn" data-ko="다운로드" data-en="Download">다운로드</a>
       </div>
     </div>
 
@@ -332,29 +317,51 @@
   <div class="container fade-in">
     <h2 data-ko="연락처" data-en="Contact">연락처</h2>
     <div class="contact-layout">
-      <div class="contact-info">
-        <p>
-          <span data-ko="이메일" data-en="Email">이메일</span>:
+      <div class="contact-info-side">
+        <div class="contact-card">
+          <h4 data-ko="이메일" data-en="Email">이메일</h4>
           <a href="mailto:harymamee0228@gmail.com">harymamee0228@gmail.com</a>
-        </p>
-        <p>
-          Instagram:
+        </div>
+        <div class="contact-card">
+          <h4>Instagram</h4>
           <a href="https://instagram.com/b.ae_jinhee" target="_blank" rel="noopener">@b.ae_jinhee</a>
-        </p>
+        </div>
+        <div class="contact-desc lang-ko">
+          <p>작품 문의, 전시 제안 및 협업 관련 메시지를 보내주시면<br />확인 후 회신 드리겠습니다.</p>
+        </div>
+        <div class="contact-desc lang-en" style="display:none;">
+          <p>For inquiries about works, exhibition proposals,<br />or collaborations, please send a message.</p>
+        </div>
       </div>
-      <div class="contact-form">
-        <h3 data-ko="메시지 보내기" data-en="Send a Message">메시지 보내기</h3>
+      <div class="contact-form-side">
         <form id="contactForm">
-          <input type="text" id="contactName" required
-            data-ko-placeholder="이름" data-en-placeholder="Name" placeholder="이름" />
-          <input type="email" id="contactEmail" required
-            data-ko-placeholder="이메일" data-en-placeholder="Email" placeholder="이메일" />
-          <input type="text" id="contactSubject"
-            data-ko-placeholder="제목" data-en-placeholder="Subject" placeholder="제목" />
-          <textarea id="contactMessage" rows="5" required
-            data-ko-placeholder="메시지를 입력하세요" data-en-placeholder="Your message" placeholder="메시지를 입력하세요"></textarea>
+          <div class="form-group">
+            <label for="contactName" class="lang-ko">이름</label>
+            <label for="contactName" class="lang-en" style="display:none;">Name</label>
+            <input type="text" id="contactName" required autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <label for="contactEmail" class="lang-ko">이메일</label>
+            <label for="contactEmail" class="lang-en" style="display:none;">Email</label>
+            <input type="email" id="contactEmail" required autocomplete="email" />
+          </div>
+          <div class="form-group">
+            <label for="contactSubject" class="lang-ko">제목</label>
+            <label for="contactSubject" class="lang-en" style="display:none;">Subject</label>
+            <input type="text" id="contactSubject" />
+          </div>
+          <div class="form-group">
+            <label for="contactMessage" class="lang-ko">메시지</label>
+            <label for="contactMessage" class="lang-en" style="display:none;">Message</label>
+            <textarea id="contactMessage" rows="6" required></textarea>
+          </div>
           <button type="submit" class="submit-btn" data-ko="보내기" data-en="Send">보내기</button>
         </form>
+        <div id="formSuccess" class="form-success" style="display:none;">
+          <div class="success-icon">✓</div>
+          <p class="lang-ko">메시지가 성공적으로 전송되었습니다.</p>
+          <p class="lang-en" style="display:none;">Your message has been sent successfully.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -365,11 +372,10 @@
   <p>&copy; 2025 Bae Jin Hee. All rights reserved.</p>
 </footer>
 
-<!-- Firebase SDK -->
+<!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
 <script src="script.js"></script>
-
 </body>
 </html>
