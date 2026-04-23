@@ -611,3 +611,45 @@ if ('serviceWorker' in navigator) {
   });
 }
 */
+
+// 언어 전환 시 lang-ko / lang-en 표시 전환
+function updateLanguageBlocks(lang) {
+  document.querySelectorAll('.lang-ko').forEach(el => {
+    el.style.display = lang === 'ko' ? 'block' : 'none';
+  });
+  document.querySelectorAll('.lang-en').forEach(el => {
+    el.style.display = lang === 'en' ? 'block' : 'none';
+  });
+  
+  // placeholder 전환
+  document.querySelectorAll('[data-ko-placeholder]').forEach(el => {
+    el.placeholder = lang === 'ko' ? el.dataset.koPlaceholder : el.dataset.enPlaceholder;
+  });
+}
+
+// Contact Form 전송 (Firebase Firestore에 저장)
+document.getElementById('contactForm')?.addEventListener('submit', async function(e) {
+  e.preventDefault();
+  
+  const name = document.getElementById('contactName').value;
+  const email = document.getElementById('contactEmail').value;
+  const subject = document.getElementById('contactSubject').value;
+  const message = document.getElementById('contactMessage').value;
+  
+  try {
+    await db.collection('messages').add({
+      name: name,
+      email: email,
+      subject: subject,
+      message: message,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      read: false
+    });
+    
+    // 성공 알림
+    alert(currentLang === 'ko' ? '메시지가 전송되었습니다. 감사합니다!' : 'Message sent successfully. Thank you!');
+    this.reset();
+  } catch (error) {
+    alert(currentLang === 'ko' ? '전송에 실패했습니다. 이메일로 직접 연락해주세요.' : 'Failed to send. Please contact via email directly.');
+  }
+});
