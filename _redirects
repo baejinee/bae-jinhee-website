@@ -1,0 +1,7 @@
+# Netlify Redirects
+
+# www to non-www
+https://www.baejinhee.netlify.app/* https://baejinhee.netlify.app/:splat 301!
+
+# SPA fallback (optional - if needed later)
+# /*    /index.html   200

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bae Jin-hee | Artist Portfolio</title>
+  <meta name="description" content="배진희 작가 포트폴리오 – 유리, 빛, 공간을 통한 감각의 구조" />
+  <meta name="keywords" content="배진희, Bae Jin-hee, artist, portfolio, glass art, stained glass, Dispace" />
+  <meta property="og:title" content="Bae Jin-hee | Artist Portfolio" />
+  <meta property="og:description" content="유리, 빛, 공간을 통한 감각의 구조" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://baejinhee.netlify.app" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header id="header">
+    <div class="logo" id="logo">BAE JIN-HEE</div>
+    <nav>
+      <a href="#about" data-ko="소개" data-en="About" class="nav-link">소개</a>
+      <a href="#works" data-ko="작품" data-en="Works" class="nav-link">작품</a>
+      <a href="#cv" data-ko="이력" data-en="CV" class="nav-link">이력</a>
+      <a href="#contact" data-ko="연락처" data-en="Contact" class="nav-link">연락처</a>
+      <button id="langToggle" class="lang-btn">EN</button>
+    </nav>
+    <div class="menu-toggle" id="menuToggle">
+      <span></span><span></span><span></span>
+    </div>
+  </header>
+
+  <!-- MOBILE NAV -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#about" data-ko="소개" data-en="About" class="nav-link">소개</a>
+    <a href="#works" data-ko="작품" data-en="Works" class="nav-link">작품</a>
+    <a href="#cv" data-ko="이력" data-en="CV" class="nav-link">이력</a>
+    <a href="#contact" data-ko="연락처" data-en="Contact" class="nav-link">연락처</a>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-content fade-in">
+      <h1>BAE JIN-HEE</h1>
+      <p class="hero-sub" data-ko="유리, 빛, 공간을 통한 감각의 구조" data-en="The Structure of Sensation through Glass, Light, and Space">유리, 빛, 공간을 통한 감각의 구조</p>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="container fade-in">
+      <h2 data-ko="소개" data-en="About">소개</h2>
+      <div class="about-layout">
+        <div class="about-image">
+          <img src="images/profile.jpg" alt="Bae Jin-hee" />
+        </div>
+        <div class="about-text">
+          <div class="lang-ko">
+            <p>배진희(b.1996)는 서울을 기반으로 활동하는 작가로, 유리와 빛을 매개로 공간의 감각적 경계를 탐구합니다.</p>
+            <p>2016년부터 발전시켜 온 핵심 개념 <strong>'디스페이스(Dispace)'</strong>는 외부 자극이 침투할 때 붕괴되는 사적 감각 공간을 의미합니다. 유리라는 물질의 양가적 속성—투명하면서도 단절하는—을 통해, 경계 위에 존재하는 '사이 공간'을 구축합니다.</p>
+            <p>인천가톨릭대학교에서 회화과(복수전공: 교회미술) 학사(2018)와 석사(2020)를 취득하였으며, 스테인드글라스연구소 연구원(2020–2022)으로 활동했습니다. 현재 스튜디오 제이스텔라(J.stellar)를 운영하며 설치, 유리 조형, 공간 프로젝트를 이어가고 있습니다.</p>
+          </div>
+          <div class="lang-en" style="display:none;">
+            <p>Bae Jin-hee (b. 1996) is a Seoul-based artist who explores the sensory boundaries of space through glass and light.</p>
+            <p>Her core concept, <strong>'Dispace'</strong> (developed since 2016), refers to a private sensory space that collapses upon the intrusion of external stimuli. Through the ambivalent properties of glass—simultaneously transparent and disconnecting—she constructs 'in-between spaces' that exist on boundaries.</p>
+            <p>She received her B.F.A. (2018) and M.F.A. (2020) in Painting with a double major in Christian Art from Incheon Catholic University. She worked as a researcher at the Stained Glass Research Institute (2020–2022) and currently directs Studio J.stellar, continuing her practice in installation, glass sculpture, and spatial projects.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORKS -->
+  <section id="works" class="section">
+    <div class="container fade-in">
+      <h2 data-ko="작품" data-en="Works">작품</h2>
+      <div class="works-filter">
+        <button class="filter-btn active" data-filter="all" data-ko="전체" data-en="All">전체</button>
+      </div>
+      <div class="works-grid" id="worksGrid">
+        <!-- Firebase에서 동적 로드 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK MODAL -->
+  <div class="modal" id="workModal">
+    <div class="modal-content">
+      <span class="modal-close" id="modalClose">&times;</span>
+      <div class="modal-body">
+        <div class="modal-image">
+          <img id="modalImg" src="" alt="" />
+        </div>
+        <div class="modal-info">
+          <h3 id="modalTitle"></h3>
+          <p id="modalYear" class="modal-year"></p>
+          <p id="modalMedium" class="modal-medium"></p>
+          <p id="modalSize" class="modal-size"></p>
+          <p id="modalDesc" class="modal-desc"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CV -->
+  <section id="cv" class="section">
+    <div class="container fade-in">
+      <h2 data-ko="이력" data-en="CV">이력</h2>
+
+      <div class="cv-block">
+        <h3 data-ko="학력" data-en="Education">학력</h3>
+        <div class="lang-ko">
+          <ul>
+            <li>2020 인천가톨릭대학교 회화과(교회미술 복수전공) 석사(M.F.A.) 졸업</li>
+            <li>2018 인천가톨릭대학교 회화과(교회미술 복수전공) 학사(B.F.A.) 졸업</li>
+          </ul>
+        </div>
+        <div class="lang-en" style="display:none;">
+          <ul>
+            <li>2020 M.F.A. in Painting (Double Major: Christian Art), Incheon Catholic University</li>
+            <li>2018 B.F.A. in Painting (Double Major: Christian Art), Incheon Catholic University</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cv-block">
+        <h3 data-ko="개인전" data-en="Solo Exhibitions">개인전</h3>
+        <div class="lang-ko">
+          <ul>
+            <li>2024 《RE;lation》 갤러리 도스, 서울</li>
+            <li>2022 《Dispace》 아트포럼리, 서울</li>
+            <li>2021 《빛을 드리다》 인천가톨릭대학교 갤러리, 인천</li>
+          </ul>
+        </div>
+        <div class="lang-en" style="display:none;">
+          <ul>
+            <li>2024 "RE;lation" Gallery DOS, Seoul</li>
+            <li>2022 "Dispace" Art Forum Rhee, Seoul</li>
+            <li>2021 "Offering the Light" Incheon Catholic University Gallery, Incheon</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cv-block">
+        <h3 data-ko="단체전" data-en="Group Exhibitions">단체전</h3>
+        <div class="lang-ko">
+          <ul>
+            <li>2026 《잔상의 레이어》 (예정)</li>
+            <li>2026 《World ARTFESTA 2026》 (예정)</li>
+            <li>2025 《겨자씨만한 용기를 가지고》 인천가톨릭대학교 갤러리, 인천</li>
+            <li>2025 《빛을 찾아서》 가톨릭미술작가회展, 서울</li>
+          </ul>
+        </div>
+        <div class="lang-en" style="display:none;">
+          <ul>
+            <li>2026 "A Layer of Afterimage" (Upcoming)</li>
+            <li>2026 "World ARTFESTA 2026" (Upcoming)</li>
+            <li>2025 "With the Courage of a Mustard Seed" Incheon Catholic University Gallery, Incheon</li>
+            <li>2025 "In Search of Light" Catholic Art Association Exhibition, Seoul</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cv-block">
+        <h3 data-ko="수상" data-en="Awards">수상</h3>
+        <div class="lang-ko">
+          <ul>
+            <li>2021 젊은 성미술 공모전 선정작가</li>
+            <li>2018 ART ULSAN 우수상</li>
+          </ul>
+        </div>
+        <div class="lang-en" style="display:none;">
+          <ul>
+            <li>2021 Young Sacred Art Competition – Selected Artist</li>
+            <li>2018 ART ULSAN – Excellence Award</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cv-block">
+        <h3 data-ko="경력" data-en="Experience">경력</h3>
+        <div class="lang-ko">
+          <ul>
+            <li>2022– 스튜디오 제이스텔라(J.stellar) 대표</li>
+            <li>2020–2022 스테인드글라스연구소 연구원</li>
+          </ul>
+        </div>
+        <div class="lang-en" style="display:none;">
+          <ul>
+            <li>2022– Director, Studio J.stellar</li>
+            <li>2020–2022 Researcher, Stained Glass Research Institute</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cv-block">
+        <h3 data-ko="프로젝트" data-en="Projects">프로젝트</h3>
+        <div class="lang-ko">
+          <ul>
+            <li>2025 장곡성당 스테인드글라스 제작</li>
+            <li>2024 영화 《히어미: 아워 서머》 조명 작업</li>
+            <li>2018–2022 기관 스테인드글라스 프로젝트 (8건)</li>
+          </ul>
+        </div>
+        <div class="lang-en" style="display:none;">
+          <ul>
+            <li>2025 Janggok Catholic Church – Stained Glass Production</li>
+            <li>2024 Film "Hear Me: Our Summer" – Lighting Work</li>
+            <li>2018–2022 Institutional Stained Glass Projects (8 projects)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="container fade-in">
+      <h2 data-ko="연락처" data-en="Contact">연락처</h2>
+      <div class="contact-info">
+        <p>
+          <span data-ko="이메일" data-en="Email">이메일</span>:
+          <a href="mailto:harymamee0228@gmail.com">harymamee0228@gmail.com</a>
+        </p>
+        <p>
+          Instagram:
+          <a href="https://instagram.com/baejinhee_artist" target="_blank" rel="noopener">@baejinhee_artist</a>
+        </p>
+        <p>
+          YouTube:
+          <a href="https://youtube.com/@Baejinhee_artist" target="_blank" rel="noopener">@Baejinhee_artist</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Bae Jin-hee. All rights reserved.</p>
+  </footer>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
